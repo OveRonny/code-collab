@@ -1,0 +1,18 @@
+	                                Modul 2	                                        Vue
+Linjer totalt	                    50	                                            23
+Steder som må oppdateres manuelt	4	                                            0
+Hvor ser count	                    _count og DOM-en	                            ref og template
+                          
+
+I Vue forsvant blant annet:
+- render()
+- innerHTML
+- getElementById
+- manuell oppdatering av DOM
+- manuell registrering av klikkhendelser
+
+
+Du trenger ikke si at doubled avhenger av count, fordi Vue ser dette i uttrykket:
+const doubled = computed(() => count.value * 2)
+Når count.value brukes inne i computed, registrerer Vue automatisk at doubled avhenger av count. 
+Heretter beregnes doubled på nytt hver gang count endres.
