@@ -4,6 +4,7 @@ import AppHeader from "./components/AppHeader.vue";
 import AppFooter from "./components/AppFooter.vue";
 import TextEditor from "./components/TextEditor.vue";
 import AssistantPanel from "./components/AssistantPanel.vue";
+import ClickCounter from "./components/ClickCounter.vue";
 
 const userName = ref("");
 </script>
@@ -11,6 +12,8 @@ const userName = ref("");
 <template>
   <div class="app-layout">
     <AppHeader v-model:userName="userName" class="app-header" />
+    <ClickCounter class="app-counter" :initial="5" />
+    <ClickCounter class="app-counter" :initial="10" />
     <TextEditor class="app-editor" />
     <AssistantPanel class="app-assistant" />
     <AppFooter appName="Code Collab" :year="new Date().getFullYear()" class="app-footer" />
@@ -51,6 +54,11 @@ const userName = ref("");
   background:
     radial-gradient(circle at top left, #202744 0, transparent 35%),
     var(--bg);
+}
+
+.app-counter {
+  grid-column: 1 / -1;
+  justify-self: center;
 }
 
 .app-header,
