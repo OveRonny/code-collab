@@ -1,6 +1,8 @@
 <script setup lang="ts">
 defineProps<{
   userName: string;
+  greeting: string;
+  kjøringer: number;
 }>();
 const emit = defineEmits<{ "update:userName": [value: string] }>();
 </script>
@@ -13,5 +15,9 @@ const emit = defineEmits<{ "update:userName": [value: string] }>();
       @input="emit('update:userName', ($event.target as HTMLInputElement).value)"
       placeholder="Skriv navnet ditt..."
     />
+      <dialog open>
+      <p>{{ greeting }}</p>
+      <p>Dette er kjøring nummer {{ kjøringer }}</p>  
+    </dialog>
   </header>
 </template>

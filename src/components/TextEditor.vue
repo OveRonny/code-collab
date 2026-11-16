@@ -1,11 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, watch } from 'vue'
+import EditorToolbar from './EditorToolbar.vue'
 
-const text = ref('')
+defineProps<{ userName: string }>()
+const charCount = computed(() => text.value.length)
+
+const text = ref(localStorage.getItem('textDraft') ?? '')
+
+watch(text, (newText) => {
+  localStorage.setItem('textDraft', newText)
+})
 </script>
 
 <template>
-  <main>
+  <section>
+    <EditorToolbar
+      :userName="userName"
+      :charCount="charCount"
+    />
     <textarea v-model="text" placeholder="Skriv koden din her..." />
-  </main>
+  </section>
 </template>
